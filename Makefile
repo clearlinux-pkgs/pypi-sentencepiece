@@ -1,5 +1,5 @@
 PKG_NAME := pypi-sentencepiece
-URL = https://files.pythonhosted.org/packages/30/ea/b6cc06f178c4ad88f265011d7a2649a7d5278a88a7afa63cda9344513ea6/sentencepiece-0.1.98.tar.gz
+URL = https://files.pythonhosted.org/packages/d8/87/b37ebc960d0a85e10785a1a92d796edbd975840bee150a9ae3ba5d7a0250/sentencepiece-0.1.99.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

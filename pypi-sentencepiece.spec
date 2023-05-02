@@ -4,15 +4,13 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-sentencepiece
-Version  : 0.1.98
-Release  : 4
-URL      : https://files.pythonhosted.org/packages/30/ea/b6cc06f178c4ad88f265011d7a2649a7d5278a88a7afa63cda9344513ea6/sentencepiece-0.1.98.tar.gz
-Source0  : https://files.pythonhosted.org/packages/30/ea/b6cc06f178c4ad88f265011d7a2649a7d5278a88a7afa63cda9344513ea6/sentencepiece-0.1.98.tar.gz
+Version  : 0.1.99
+Release  : 5
+URL      : https://files.pythonhosted.org/packages/d8/87/b37ebc960d0a85e10785a1a92d796edbd975840bee150a9ae3ba5d7a0250/sentencepiece-0.1.99.tar.gz
+Source0  : https://files.pythonhosted.org/packages/d8/87/b37ebc960d0a85e10785a1a92d796edbd975840bee150a9ae3ba5d7a0250/sentencepiece-0.1.99.tar.gz
 Summary  : SentencePiece python wrapper
 Group    : Development/Tools
 License  : Apache-2.0 BSD-3-Clause MIT
-Requires: pypi-sentencepiece-filemap = %{version}-%{release}
-Requires: pypi-sentencepiece-lib = %{version}-%{release}
 Requires: pypi-sentencepiece-license = %{version}-%{release}
 Requires: pypi-sentencepiece-python = %{version}-%{release}
 Requires: pypi-sentencepiece-python3 = %{version}-%{release}
@@ -26,24 +24,6 @@ BuildRequires : pkgconfig(sentencepiece)
 %description
 # SentencePiece Python Wrapper
 Python wrapper for SentencePiece. This API will offer the encoding, decoding and training of Sentencepiece.
-
-%package filemap
-Summary: filemap components for the pypi-sentencepiece package.
-Group: Default
-
-%description filemap
-filemap components for the pypi-sentencepiece package.
-
-
-%package lib
-Summary: lib components for the pypi-sentencepiece package.
-Group: Libraries
-Requires: pypi-sentencepiece-license = %{version}-%{release}
-Requires: pypi-sentencepiece-filemap = %{version}-%{release}
-
-%description lib
-lib components for the pypi-sentencepiece package.
-
 
 %package license
 Summary: license components for the pypi-sentencepiece package.
@@ -65,7 +45,6 @@ python components for the pypi-sentencepiece package.
 %package python3
 Summary: python3 components for the pypi-sentencepiece package.
 Group: Default
-Requires: pypi-sentencepiece-filemap = %{version}-%{release}
 Requires: python3-core
 Provides: pypi(sentencepiece)
 
@@ -74,10 +53,10 @@ python3 components for the pypi-sentencepiece package.
 
 
 %prep
-%setup -q -n sentencepiece-0.1.98
-cd %{_builddir}/sentencepiece-0.1.98
+%setup -q -n sentencepiece-0.1.99
+cd %{_builddir}/sentencepiece-0.1.99
 pushd ..
-cp -a sentencepiece-0.1.98 buildavx2
+cp -a sentencepiece-0.1.99 buildavx2
 popd
 
 %build
@@ -85,15 +64,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1681316681
+export SOURCE_DATE_EPOCH=1683042449
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
@@ -139,14 +118,6 @@ popd
 %files
 %defattr(-,root,root,-)
 
-%files filemap
-%defattr(-,root,root,-)
-/usr/share/clear/filemap/filemap-pypi-sentencepiece
-
-%files lib
-%defattr(-,root,root,-)
-/usr/share/clear/optimized-elf/other*
-
 %files license
 %defattr(0644,root,root,0755)
 /usr/share/package-licenses/pypi-sentencepiece/1995e90082fbabd8ed1ed097878c6518ba7d826e
@@ -160,4 +131,5 @@ popd
 
 %files python3
 %defattr(-,root,root,-)
+/V3/usr/lib/python3*/*
 /usr/lib/python3*/*
