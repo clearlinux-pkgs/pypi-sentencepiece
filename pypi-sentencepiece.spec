@@ -5,7 +5,7 @@
 #
 Name     : pypi-sentencepiece
 Version  : 0.1.99
-Release  : 8
+Release  : 9
 URL      : https://files.pythonhosted.org/packages/d8/87/b37ebc960d0a85e10785a1a92d796edbd975840bee150a9ae3ba5d7a0250/sentencepiece-0.1.99.tar.gz
 Source0  : https://files.pythonhosted.org/packages/d8/87/b37ebc960d0a85e10785a1a92d796edbd975840bee150a9ae3ba5d7a0250/sentencepiece-0.1.99.tar.gz
 Summary  : SentencePiece python wrapper
